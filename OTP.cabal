@@ -1,6 +1,6 @@
 cabal-version: 1.12
 name:          OTP
-version:       0.1.0.0
+version:       0.1.0.1
 synopsis:      HMAC-Based and Time-Based One-Time Passwords (HOTP & TOTP)
 
 description:   Implements the /HMAC-Based One-Time Password Algorithm/ (HOTP) as
@@ -50,17 +50,17 @@ library
   other-extensions:   CPP
 
   if flag(pure-sha)
-    build-depends: SHA
-                    , bytestring
-                    , base
-                    , time
+    build-depends:    SHA                >= 1.6.4.4
+                    , bytestring         >= 0.10.0.0
+                    , base               >= 4.3.0.0
+                    , time               >= 1.2
   else
-    build-depends:  cryptohash-sha1
-                    , cryptohash-sha256
-                    , cryptohash-sha512
-                    , bytestring
-                    , base
-                    , time
+    build-depends:    cryptohash-sha1    >= 0.11.100.1
+                    , cryptohash-sha256  >= 0.11.100.1
+                    , cryptohash-sha512  >= 0.11.100.1
+                    , bytestring         >= 0.9.2.0
+                    , base               >= 4.5.0.0
+                    , time               >= 1.4
 
   ghc-options:        -Wall
 
@@ -79,7 +79,7 @@ test-suite tests
                     , OTP
                     , time
                     -- dependency constraints not inherited via 'OTP' component
-                    , tasty
+                    , tasty >= 1.1
                     , tasty-hunit
 
   ghc-options:        -Wall
